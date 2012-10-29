@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block head_title %}loging 诺曼底登陆{% endblock %}
+<h1>{% block title %}Welcome to login 诺曼底登陆{% endblock %}</h1>
+{% block content %}
+    {% if form.errors %}
+        <p class="error">Oops, invalid username or password</p>
+    {% endif %}
+ 
+    <form action="{% url login %}?next=/upload/" method="post">
+    {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="login" />
+    </form>
+{% endblock %}

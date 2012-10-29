@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+<title>{% block head_title %}Gets all!    --- share all files with ur friends .{% endblock %}</title> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+{% load static %}
+<link href="{% static "css/github-79deedc9ae9b1bda89bbd8190e28c72402fd3748.css" %}" media="screen" rel="stylesheet" type="text/css" />
+<link href="{% static "css/github2-47be34ff3f0b5692ae1d06b815b78dbd21eb9263.css" %}" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	body {
+		font-family:Verdana, Geneva, sans-serif;
+		font-size:13px;
+		color:#333;
+		background:url(/media/img/bg.jpg);
+	}
+</style>
+{% block extrahead %}{% endblock %}
+</head>
+<body>
+  <div id="wrapper">
+      <div id="header" class="true clearfix">
+        <div class="container clearfix">
+          <a class="site-logo" href="http://www.gets.so">
+            <img alt="Gets" class="github-logo-4x" height="30" src="/media/img/logo.png" />
+          </a>
+	
+
+
+              
+    <div class="topsearch  ">
+        <form accept-charset="UTF-8" action="/search" id="top_search_form" method="get">
+  <a href="/search" class="advanced-search tooltipped downwards" title="Advanced Search"><span class="mini-icon mini-icon-advanced-search"></span></a>
+  <div class="search placeholder-field js-placeholder-field">
+    <input type="text" class="search my_repos_autocompleter" id="global-search-field" name="q" results="5" spellcheck="false" autocomplete="off" data-autocomplete="my-repos-autocomplete" placeholder="Search&hellip;" data-hotkey="s" />
+    <input type="submit" value="Search" class="button">
+    <span class="mini-icon mini-icon-search-input"></span>
+  </div>
+</form>
+
+<ul class="top-nav">
+<li class="explore"><a href="https://github.com/explore">Explore</a></li>
+
+<li><a href="http://help.gets.so">Help</a></li>
+{% if user.is_authenticated %}
+<li>Welcome,<a href="/user/{{ user.username }}/">{{ user.username }}</a>.<a href="/logout/">Logout</a></li>
+{% else %}
+<li><a href="/register/">Register</a></li>
+<li><a href="/login/">Login</a></li>
+{% endif %}
+</ul>
+
+	</div></div></div>
+
+<div class="site clearfix"><div id="site-container" class="container" data-pjax-container>
+<div class="pagehead shrunken dashboard">
+<ul class="tabs">
+<li><a href="/upload/" class="selected">Home</a></li>
+<li><a href="/upload/hot">Hot Sale</a></li>
+<li><a href="/upload/favorites">guess favorite</a></li>
+<li><a href="/upload/top100">Top100 download</a></li>
+</ul></div><!-- /.pagehead -->
+<!-- this a google ads-->
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3873019534030588";
+/* doc_se */
+google_ad_slot = "0531057116";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+<br/>
+Email:googcheng@funse.net  &#169;2012 gets.so 得到网络 版权所有!  <script src="http://s15.cnzz.com/stat.php?id=4173357&web_id=4173357&show=pic" language="JavaScript"></script>
+{% endblock %}
+
+</body>
+</html>

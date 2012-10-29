@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+    
+ 
+
+        <div>
+            
+         <p>welcome here , Dear User :{{username.value}} E-Mail: {{email.value}}</p>
+         <p><FONT COLOR="red">please check your mail and activate your account </FONT></p>   
+	 <p>or go to the <a href="{% url index %}">index page</a></p>
+         </div>
+          
+        
+     
+{% endblock %}

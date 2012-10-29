@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>register page  -- gets all. </title>
+<link href="/static/base.css" rel="stylesheet" type="text/css" />
+<link href="/static/jNice.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/jquery-latest.js"></script>
+<script type="text/javascript" src="/static/jquery.jNice.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js" type="text/javascript"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
+        <script>
+        $(function() {
+                $( "#id_birthday" ).datepicker();
+        });
+        </script>
+
+
+</head>
+
+<body>
+<img src="/media/img/logo.jpg" alt="logo" height="152" width="646"> 
+<h1>Be a proud member of our website</h1>
+
+<form class="jNice" action="" method="post">
+{% csrf_token %}
+
+<table width="400" border="0" cellpadding="3" cellspacing="0">
+{{ form.username.errors }}
+<tr><td width="100" align="right">Username:</label></td><td>{{ form.username }} </td></tr>
+
+<tr>{{ form.email.errors }}</tr>
+<tr><td align="right"><label for="email">Email:</label></td><td>{{ form.email }} </td></tr>
+
+<tr>{{ form.password1.errors }}</tr>
+<tr><td align="right"><label for="password1">Password:</label></td><td>{{ form.password1 }} </td></tr>
+<tr>{{ form.password2.errors }}</tr>
+<tr><td align="right"><label for="password2">Repeat:</label></td><td>{{ form.password2 }} </td></tr>
+
+<tr>{{ form.birthday.errors }}</tr>
+<tr><td align="right"><label for="birthday">Birthday:</label></td><td>{{ form.birthday }}(10/02/2012)</td></tr>
+
+<tr>{{ form.favorite.errors }}</tr>
+<tr><td align="right"><label for="favorite">Favorite:</label></td><td>{{ form.favorite }} </td></tr>
+<tr>{{ form.name.errors }}</tr>
+<tr><td align="right"><label for="name">Name:</label></td><td>{{ form.name}} </td></tr>
+
+ <tr> 
+    <td align="right">Buttons:</td>
+    <td><input type="submit" name="Submit" id="Submit" value="Submit" />
+      <input type="reset" value="Reset" /></td>
+  </tr>
+
+</table>
+
+    </form>
+
+<hr>
+read me
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</body>
+</html>
+
