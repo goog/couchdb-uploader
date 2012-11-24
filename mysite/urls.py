@@ -29,6 +29,8 @@ urlpatterns = patterns('',
     url(r'^logout/$',  logout,{'next_page': '/upload/'}, name="logout"), 
     url(r'^goto/(?P<id>\w+)/(?P<filename>.+)/$', 'upload.views.goto' ),
     url(r'^user/(?P<username>\w+)/$', 'upload.views.ShowProfile' ),
+    url(r'^top100/$', 'upload.views.top100' ),
+    url(r'^guess/$', 'upload.views.guess' ),
     
 
 )

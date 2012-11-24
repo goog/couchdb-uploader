@@ -121,12 +121,13 @@ def detail(request,id):
         raise Http404
     if request.method == "POST":
         # relax to do multiple fields
-	print request.POST
+	#print request.POST
         for key in request.POST.keys():
             if key != "csrfmiddlewaretoken" and request.POST.get(key,''):
                 doc[key] = request.POST.get(key)
         db[id] = doc
     setattr(doc, "attachment", doc['_attachments'].keys()[0])
+## the whole document isnt a good choice
     return render_to_response('detail.html',{'row':doc},
 			context_instance=RequestContext(request))
 
@@ -136,19 +137,55 @@ def ShowProfile(request,username):
     object = ProfileForm(data)
 
     ######## view function ########
-    '''map_fun =  'function(doc) {if(doc.user=="' + username + '") emit(doc.id,null);}' '''
     list = []
     for row in db.view('_design/example/_view/detail',key = username):
         list.append(row.id)
-    ## TODO 
-    ## show more infos 
+    ## TODO show more infos 
     return render_to_response('profile.html', {'object': object , 'list': list },
 		context_instance=RequestContext(request))
 
 
 def goto(request,id,filename):
-   return HttpResponseRedirect('http://127.0.0.1:5984/test/'+id+'/'+filename)
+    try:
+        doc = db[id]
+    except:
+        raise Http404
+    doc['cnt']+=1
+    db[id]=doc
+    return HttpResponseRedirect('http://127.0.0.1:5984/test/'+id+'/'+filename)
    
 
+@login_required(login_url='/login')
+def guess(request):
+    ## default GET
+    list=[]
+    like = UserProfile.objects.get(user_id=User.objects.get(username=request.user)).favorite
+    #request.like = like  the request doesnt change immediately
+    # to do the fuzzy match , give me a lesson[doc error]
+    if not db.list('_design/example/_list/likes','guess',q=like):
+        print "search is empty"
+    else:
+        for row in db.list('_design/example/_list/likes','guess',q=like)[1]['rows']:
+	    #list.append(row['id'])
+	    new={}
+	    new['id']= row['id']
+            new['filename']= db[row['id']]['_attachments'].keys()[0]
+            list.append(new)
+    return render_to_response('recommend.html', {'list': list }, context_instance=RequestContext(request))
 
 
+def top100(request):
+    list = []
+    cnt=0
+    for row in db.view('_design/example/_view/top100',descending=True):
+	new={}
+	new['id']=row.id
+	new['cnt']=db[row.id]['cnt']
+        new['filename']= db[row.id]['_attachments'].keys()[0]
+        list.append(new)
+        cnt+=1
+        if cnt==100:
+            break
+    
+    # the id isnt enough, id, cnt, filename
+    return render_to_response('top100.html', {'list': list }, context_instance=RequestContext(request))

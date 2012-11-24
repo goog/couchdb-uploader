@@ -5,6 +5,6 @@
 <p>please go to login or register first</p>
 
 {% load url from future %} {% comment %} must add this line{% endcomment%}
-<a href="{% url 'django.contrib.auth.views.login' %}"> login </a>
+<a href="{% url 'django.contrib.auth.views.login' %}"> login</a>&nbsp;
 <a href="{% url 'register' %}"> register </a>
 {% endblock %}

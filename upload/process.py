@@ -3,6 +3,7 @@ from  nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 import nltk
 from datetime import datetime
 import subprocess
+from topia.termextract import extract
 #import tika
 #tika.initVM()
 #from tika import parser
@@ -29,8 +30,22 @@ def handler(file,meta):
 
     dt = datetime.now()
     meta['created'] = dt.strftime('%Y-%m-%d %H:%M:%S')
+    # initialize the downloaded time 
+    meta['cnt'] = 0
+    
     if text:
-        meta['fre'] = analysis(text)
+	if len(text)<=400:
+	    meta['begin']=text    
+	else:
+	    meta['begin']=text[:400]
+        ## to do a better way
+        extractor = extract.TermExtractor()
+        extractor.filter = extract.DefaultFilter(singleStrengthMinOccur=10)
+        if extractor(text):
+            keywords=[]
+            for i in extractor(text):
+                keywords.append(i[0])
+            meta['keyword'] =','.join(keywords)
     
     id = db.save(meta)[0]
     file.seek(0)
@@ -41,14 +56,14 @@ def handler(file,meta):
     
 # text analysis
 def analysis(text):
-    #TODO  add some meta data
+
     tokens=[]
     for t in sent_tokenize(text):
         tokens.extend(word_tokenize(t))
     text = nltk.Text(tokens)
     fdist = nltk.FreqDist(text)
     vocabulary = fdist.keys()
-    return ''.join(vocabulary[:50])
+    return ' '.join(vocabulary[:50])
 
     
 
