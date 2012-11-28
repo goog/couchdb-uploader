@@ -19,7 +19,6 @@ there is also a java version:  [scrutmydocs] [scrutmydocs] by dadoonet (recently
 couchdb-uploader requires
 
 * Django 1.4 (http://www.djangoproject.com)
-* Filebrowser (https://github.com/sehmaschine/django-filebrowser)
 * MySql(http://www.sitepoint.com/ubuntu-12-04-lts-precise-pangolin-introducing-mysql-server/)
 * CouchDB(https://github.com/iriscouch/build-couchdb)
 

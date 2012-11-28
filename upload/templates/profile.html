@@ -9,11 +9,12 @@
 {% endfor %}
 
 
-</div>
 <div>
-	{% for id in list %}
-	<p><a href="{% url doc id %}"> doc id </a></p>
+	<ol>
+	{% for i in list %}
+        <li><a href="{% url doc i.id %}"> {{i.filename}}</a> {{ i.cnt }}</li>
 	{% endfor %}
+        </ol>
 </div>
 <!-- JiaThis Button BEGIN -->
 <div class="jiathis_style">

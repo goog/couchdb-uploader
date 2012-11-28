@@ -22,11 +22,11 @@ def handler(file,meta):
 
     ##### to parse the file ######
     try:
-        text = subprocess.check_output("java -jar tika-app-1.2.2.jar -t tempfile", shell=True)
+        text = subprocess.check_output("java -jar tika-app-1.2.jar -t tempfile", shell=True)
     except:
         text = ''
 
-    #metadata = subprocess.check_output("java -jar tika-app-1.2.2.jar -j tempfile", shell=True)
+    #metadata = subprocess.check_output("java -jar tika-app-1.2.jar -j tempfile", shell=True)
 
     dt = datetime.now()
     meta['created'] = dt.strftime('%Y-%m-%d %H:%M:%S')
@@ -40,11 +40,15 @@ def handler(file,meta):
 	    meta['begin']=text[:400]
         ## to do a better way
         extractor = extract.TermExtractor()
-        extractor.filter = extract.DefaultFilter(singleStrengthMinOccur=10)
         if extractor(text):
-            keywords=[]
-            for i in extractor(text):
+            keywords=[];cnt=0
+	    extractor(text).sort(key=lambda tup: tup[1],reverse=True)
+	    for i in extractor(text):
                 keywords.append(i[0])
+		cnt+=1
+		if cnt==5:
+		    break
+            print cnt,keywords
             meta['keyword'] =','.join(keywords)
     
     id = db.save(meta)[0]

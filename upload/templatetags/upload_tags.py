@@ -13,8 +13,8 @@ def upload_js():
         <td class="name"><span>{%=file.name%}</span></td>
         <td class="desc"><label>Description:<input type="text" name="desc"></label></td>
         <td class="tags"><label>Tags:<input type="text" name="tag"></label></td>
-	<td class=""><label>Public:<input type="radio" name="pri" value="1" checked></label></td>
-	<td class=""><label>Private:<input type="radio" name="pri" value="0"></label></td>
+	<td><label>Public:<input type="radio" name="pri" value="1" checked></label>
+	<label>Private:<input type="radio" name="pri" value="0"></label></td>
         <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
         {% if (file.error) { %}
             <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>

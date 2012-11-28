@@ -1,15 +1,3 @@
-@font-face {
-    font-family: 'capture_itregular';
-    src: url('../font/capture_it-webfont.eot');
-    src: local('‚ò∫'),url('capture_it-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/capture_it-webfont.woff') format('woff'),
-         url('../font/capture_it-webfont.ttf') format('truetype'),
-         url('../font/capture_it-webfont.svg#capture_itregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 body { 
 margin: 0px;
 padding:0px;
@@ -35,21 +23,8 @@ position:relative;
 z-index:10; /* position always in front*/
 border-bottom:1px solid #cacaca;  
 box-shadow:0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+/* two shadows,downtowards shadow*/
 }
-
-.mylogo{
-float:left;
-position:relative;
-padding:9px 0 0 0;
-zoom:1;  /* some effect*/
-}
-
-.mylogo img{
-position:absolute;
-top:10px; /* distance between parent element*/
-left:0;}   /* set margin*/
-
-.gets-logo-4x{float:left;}
 
 .topsearch{
 float:left;
@@ -91,6 +66,31 @@ text-decoration:none;
 color:#4183c4;
 }
 
+.mylogo{
+float:left;
+position:relative;
+padding:9px 0 0 0;
+zoom:1;  /* some effect*/
+}
+
+.mylogo img{
+position:absolute;
+top:10px; /* distance between parent element*/
+left:0;}   /* set margin*/
+
+.gets-logo-4x{float:left;}
+
+@font-face {
+    font-family: 'capture_itregular';
+    src: url('../font/capture_it-webfont.eot');
+    src: local('‚ò∫'),url('capture_it-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/capture_it-webfont.woff') format('woff'),
+         url('../font/capture_it-webfont.ttf') format('truetype'),
+         url('../font/capture_it-webfont.svg#capture_itregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 /* menu part */
 #topnav ul{

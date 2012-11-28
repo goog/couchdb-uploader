@@ -2,9 +2,8 @@
 {% block content %}
 
 <hr style="border:1px dashed green; height:1px">
-<p>please go to login or register first</p>
+<p><strong>please go to login or register first</strong></p>
 
 {% load url from future %} {% comment %} must add this line{% endcomment%}
-<a href="{% url 'django.contrib.auth.views.login' %}"> login</a>&nbsp;
-<a href="{% url 'register' %}"> register </a>
+<a href="{% url 'login' %}"> login</a>&nbsp;<a href="{% url 'register' %}"> register </a>
 {% endblock %}

@@ -1,7 +1,5 @@
 from django.conf.urls import patterns, include, url
-from filebrowser.sites import site
 from django.conf import settings
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.contrib.auth.views import logout
 #from django.views.generic.simple import direct_to_template
@@ -14,7 +12,6 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')), 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -29,8 +26,8 @@ urlpatterns = patterns('',
     url(r'^logout/$',  logout,{'next_page': '/upload/'}, name="logout"), 
     url(r'^goto/(?P<id>\w+)/(?P<filename>.+)/$', 'upload.views.goto' ),
     url(r'^user/(?P<username>\w+)/$', 'upload.views.ShowProfile' ),
-    url(r'^top100/$', 'upload.views.top100' ),
-    url(r'^guess/$', 'upload.views.guess' ),
+    url(r'^top100/$', 'upload.views.top100',name="top100" ),
+    url(r'^guess/$', 'upload.views.guess',name="guess" ),
     
 
 )

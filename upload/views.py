@@ -139,7 +139,10 @@ def ShowProfile(request,username):
     ######## view function ########
     list = []
     for row in db.view('_design/example/_view/detail',key = username):
-        list.append(row.id)
+        new={}
+	new['id']= row.id
+        new['filename']= db[row.id]['_attachments'].keys()[0]
+        list.append(new)
     ## TODO show more infos 
     return render_to_response('profile.html', {'object': object , 'list': list },
 		context_instance=RequestContext(request))

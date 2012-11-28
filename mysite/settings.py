@@ -127,11 +127,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'grappelli',
-    'filebrowser',
+    #'filebrowser',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    #'polls',
     'upload',
 )
 
@@ -169,5 +168,5 @@ AUTH_PROFILE_MODULE = 'upload.UserProfile'
 EMAIL_HOST="smtp.163.com"
 EMAIL_PORT=None 
 EMAIL_HOST_USER="suitor00@163.com" 
-EMAIL_HOST_PASSWORD="URpass" 
+EMAIL_HOST_PASSWORD="11fendu" 
 EMAIL_USE_TLS=None 

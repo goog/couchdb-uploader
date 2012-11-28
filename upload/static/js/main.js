@@ -25,8 +25,7 @@ $(function () {
                 /* required info begins */
                 var desc = data.context.find("input[name=desc]").val();
 		var tag = data.context.find("input[name=tag]").val();
-		var pri = data.context.find("input[name=pri]").val();
-                //var pubc = data.context.find("select[name=public]").is(':checked');
+		var pri = data.context.find("select[name=pri]").is(':checked');
 
                 //csrf handling is not needed - assuming that jquery ajax is setup with csrf handling.
 
