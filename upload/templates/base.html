@@ -25,7 +25,7 @@
 <!-- top dash bar begin-->           
         <div class="topsearch">
 	<ul class="top-nav">
-	<li><a href="https://github.com/explore">Search</a></li>
+	<li><a href="#">Search</a></li>
 	{% if user.is_authenticated %}
 	<li>Welcome&nbsp;<a href="/user/{{ user.username }}/"><strong>{{ user.username }}</strong></a>&nbsp;<a href="/logout/">Logout</a></li>
 	{% else %}
@@ -67,7 +67,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 {% endblock %}
 {% block footer %}
 <br/>
-Email:googcheng@funse.net  &#169;2012 gets.so 得到网络 版权所有!  <!--<script src="http://s15.cnzz.com/stat.php?id=4173357&web_id=4173357&show=pic" language="JavaScript"></script> -->
+Email:googcheng@funse.net  &#169;2012 gets.so 得到网络 版权所有!  <script src="http://s15.cnzz.com/stat.php?id=4173357&web_id=4173357&show=pic" language="JavaScript"></script>
 {% endblock %}
 </div>
 </body>

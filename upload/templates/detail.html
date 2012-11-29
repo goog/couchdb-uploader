@@ -26,7 +26,7 @@
 {% csrf_token %}
 <table>
 	{% for k,v in row.items  %}
-	{% if k != '_attachments' and k != '_id' and k != '_rev' and k != 'user' and k != 'created' and k != 'other' %}
+	{% if k != '_attachments' and k != 'cnt' and k != '_id' and k != '_rev' and k != 'user' and k != 'created' and k != 'other' %}
 	<tr>
 		{{ k.error }}
 		<td>{{k}}</td>
