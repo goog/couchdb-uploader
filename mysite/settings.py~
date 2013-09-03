@@ -127,11 +127,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'grappelli',
-    'filebrowser',
+    #'filebrowser',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    #'polls',
     'upload',
 )
 
